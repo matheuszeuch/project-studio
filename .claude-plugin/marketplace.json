@@ -1,0 +1,14 @@
+{
+  "name": "project-studio",
+  "description": "Marketplace do plugin product-studio, mantido por Matheus Zeuch",
+  "owner": {
+    "name": "Matheus Zeuch"
+  },
+  "plugins": [
+    {
+      "name": "product-studio",
+      "source": "./product-studio",
+      "description": "Método de criação de produtos digitais com portões de aprovação"
+    }
+  ]
+}
