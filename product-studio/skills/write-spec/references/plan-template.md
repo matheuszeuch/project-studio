@@ -27,6 +27,8 @@
 | VI — Segurança e privacidade | ✅ | |
 | VII — Acessibilidade | ✅ | |
 | VIII — Observável e reversível | ✅ | |
+| IX — Tempo e aleatoriedade injetados | ✅ | |
+| X — Segredos e dados sensíveis fora do contexto | ✅ | |
 
 **Violações justificadas:** <nenhuma, ou a violação, o motivo e a alternativa mais simples rejeitada>
 

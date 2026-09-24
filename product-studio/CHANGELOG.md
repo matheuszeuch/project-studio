@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 — 2026-09-24
+- Roadmap entre features: `docs/05-specs/roadmap.md` (template novo), criado no G4 pelo product-lead, lido pela `write-spec` para oferecer a próxima feature e atualizado a cada aceite
+- Modelo de dados: template de `data-model.md`, esboço global no G4 derivado dos agregados, e visão gerada das migrações (`data-model.generated.md`) em vez de documento mantido à mão
+- Mapa de telas mantido vivo: atualização no aceite de feature, na DoD e no checklist do portão
+- Teto de documentos aplicado pelo hook de edição (`docLimits`, padrão para `STATUS.md` e `CLAUDE.md`); `STATUS.md` guarda só as 15 decisões recentes e o resto vai para `docs/decisions-log.md`
+- "Convenção que importa vira verificação": cada artigo da constitution declara como é verificado; hook de edição roda `postEditCommands` configuráveis (ESLint continua como padrão); artigos novos IX (tempo injetado) e X (segredos e dados sensíveis fora do contexto)
+- `CLAUDE.md` com leitura sob demanda (índice pergunta → arquivo) e design system dividido em pasta acima de ~300 linhas
+
 ## 1.1.0 — 2026-09-24
 - Nova skill `adopt`: adoção de um produto existente por engenharia reversa (inventário fonte → artefato, move em commit isolado, cabeçalho de origem nos artefatos reconstruídos, gaps como `HYP-`), a partir da análise do Sistema Milestones
 - Portão retroativo: `- [x] Gn … (retroativo AAAA-MM-DD)` conta como aprovado nos hooks e aparece como 🔁 no SessionStart. G0, G3 e G4 podem ser retroativos; G1 e G2 nunca

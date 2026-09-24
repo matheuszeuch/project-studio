@@ -67,7 +67,8 @@ Os caminhos são idênticos nos dois lugares. Migrar é copiar a pasta. O mapa c
 6. **Protótipo é descartável.** Nada de `prototype/` vai para produção.
 7. **Sem código de produção antes do G4.** O hook de guarda aplica isso no Claude Code.
 8. **Portão retroativo é exceção de adoção.** Só a skill `adopt` marca portões como `(retroativo)`, e nunca o G1 ou o G2.
-9. **Voltar é permitido.** Se uma fase invalidar a anterior, volte, registre o motivo no `STATUS.md` e reabra o portão.
+9. **Documento tem teto.** `STATUS.md` e `CLAUDE.md` têm teto de tamanho (`docLimits`), aplicado pelo hook de edição. Histórico sai do arquivo; o `git log` guarda o resto. Documento que passa de ~300 linhas é dividido em pasta.
+10. **Voltar é permitido.** Se uma fase invalidar a anterior, volte, registre o motivo no `STATUS.md` e reabra o portão.
 
 ## Agentes disponíveis
 

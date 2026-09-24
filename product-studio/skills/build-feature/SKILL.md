@@ -39,7 +39,13 @@ Mostre ao usuário, de forma curta:
 - As decisões tomadas sozinho durante a implementação (máximo 5)
 - A dívida assumida, se houver
 
-Depois, acione a skill `gate-review` (portão "Aceite de feature"). Com a aprovação: faça o merge, marque a feature como `aceita` no `STATUS.md` e ofereça a próxima feature (`write-spec`).
+Depois, acione a skill `gate-review` (portão "Aceite de feature"). Com a aprovação:
+
+1. Faça o merge e marque a feature como `aceita` no `STATUS.md`.
+2. Tire a feature de `docs/05-specs/roadmap.md` e revise a ordem das próximas, se a entrega mudou alguma dependência.
+3. Atualize `docs/01-discovery/screen-map.md` se a feature criou, removeu ou mudou telas.
+4. Regenere `docs/04-standards/data-model.generated.md` se houve migração.
+5. Apresente as primeiras linhas do roadmap e espere o usuário escolher a próxima. Não comece a próxima feature por conta própria.
 
 ## Quando parar e perguntar
 

@@ -30,12 +30,22 @@ export function readText(path) {
 //  - specApprovedStatus: textos de status que contam como spec aprovada
 //  - productionPaths: pastas protegidas pelo hook de guarda
 //  - unguardedPaths: exceções dentro das pastas protegidas
+//  - docLimits: teto de tamanho por documento (caracteres no arquivo e por linha).
+//    "{status}" é substituído pelo valor de statusFile
+//  - postEditCommands: verificações rodadas após cada edição. Cada item tem
+//    "paths" (prefixos), "extensions" e "command" ({file} = arquivo editado).
+//    Sem este campo, roda o ESLint do projeto em arquivos JS/TS, se instalado
 export const DEFAULT_CONFIG = {
   statusFile: "docs/STATUS.md",
   specsDir: "docs/05-specs",
   specApprovedStatus: ["Aprovada"],
   productionPaths: ["src/", "supabase/", "tests/", "e2e/"],
   unguardedPaths: [],
+  docLimits: {
+    "{status}": { maxChars: 15000, maxLineChars: 600 },
+    "CLAUDE.md": { maxChars: 10000, maxLineChars: 600 },
+  },
+  postEditCommands: null,
 };
 
 export function loadConfig(root) {

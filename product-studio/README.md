@@ -44,7 +44,7 @@ Os caminhos são idênticos nos dois lugares.
 |---|---|
 | SessionStart | Injeta a fase atual e os portões no contexto |
 | PreToolUse | Bloqueia código de produção antes do G4 (exceto durante a fase 4) e sem spec aprovada |
-| PostToolUse | Roda ESLint no arquivo editado, se instalado |
+| PostToolUse | Aplica o teto de tamanho dos documentos e roda as verificações do projeto no arquivo editado (padrão: ESLint, se instalado) |
 
 Os hooks só agem em projetos com o arquivo de status (padrão `docs/STATUS.md`). O `.product-studio.json` configura o caminho do status, a pasta e o texto de aprovação das specs, as pastas protegidas (padrão: `src/`, `supabase/`, `tests/`, `e2e/`) e as exceções. Portões marcados como `(retroativo)` contam como aprovados. Para abrir uma exceção autorizada, use `PRODUCT_STUDIO_GUARD=off`. Requer Node.js.
 

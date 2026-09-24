@@ -1,5 +1,7 @@
 # Design system: <Produto>
 
+<!-- Quando passar de ~300 linhas, divida em docs/04-standards/design-system/: um index.md (princípios, tom, tokens) e um arquivo por componente. Documento grande é lido inteiro a cada tarefa de UI. -->
+
 ## Princípios
 3 princípios derivados do posicionamento (por exemplo, "sofisticado sem ser intimidador"). Cada um com uma frase de "significa" e outra de "não significa".
 

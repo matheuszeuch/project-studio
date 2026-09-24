@@ -25,6 +25,8 @@ Status possíveis. Spec: `rascunho`, `aprovada`. Implementação: `pendente`, `e
 
 ## Registro de decisões
 
+<!-- Só as 15 decisões mais recentes. As mais antigas vão para docs/decisions-log.md, no mesmo formato. O hook de edição barra este arquivo acima do teto de tamanho. -->
+
 | Data | Decisão | Fase | Motivo |
 |---|---|---|---|
 | | | | |

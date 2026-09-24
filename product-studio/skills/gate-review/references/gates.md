@@ -40,14 +40,16 @@
 - [ ] Termos validados com o vocabulário real dos usuários (INS)
 
 ## G4 — Padrões
-- [ ] `constitution.md` com os artigos aprovados
+- [ ] `constitution.md` com os artigos aprovados, cada um com a sua verificação (lint, hook, teste ou revisão)
 - [ ] `stack.md`: stack padrão confirmada ou exceções registradas em ADR
 - [ ] Estrutura de pastas do código definida, refletindo os contextos do domínio
 - [ ] `definition-of-done.md`
 - [ ] `design-system.md`: tokens (cor, tipografia, espaçamento), componentes base, tom de voz, acessibilidade
 - [ ] ADRs das decisões estruturais
+- [ ] `data-model.md`: esboço das tabelas derivado dos agregados, com dono do dado, dados pessoais e RLS
+- [ ] `roadmap.md`: features do MVP em ordem, com tamanho e dependências
 - [ ] `CLAUDE.md` atualizado (comandos, glossário resumido)
-- [ ] Repositório com lint, testes e CI configurados e rodando (esqueleto vazio passa no CI)
+- [ ] Repositório com lint, testes e CI configurados e rodando (esqueleto vazio passa no CI), incluindo as verificações mecânicas da constitution e o gerador da visão do banco
 
 ## Spec aprovada (por feature)
 - [ ] Histórias de usuário priorizadas (P1, P2, P3), cada uma testável de forma independente
@@ -63,6 +65,7 @@
 - [ ] Definition of Done cumprida
 - [ ] Revisão do reviewer sem problemas de severidade alta
 - [ ] Demonstração apresentada ao usuário (preview, capturas ou roteiro de teste manual)
+- [ ] Mapa de telas, visão do banco e roadmap atualizados (quando aplicável)
 
 ## G7 — Lançamento
 - [ ] Landing page, one-pager e pitch deck coerentes com o press release e o glossário

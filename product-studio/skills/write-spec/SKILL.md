@@ -13,7 +13,7 @@ G4 aprovado no `docs/STATUS.md`. Antes disso, é possível rascunhar specs, mas 
 
 ## 1. Escolher a feature
 
-Se o usuário não indicou, acione o `product-lead` para propor a próxima feature: a menor fatia que entrega valor ponta a ponta à persona primária, na ordem da jornada to-be. Crie `docs/05-specs/<nnn-nome>/` e registre a feature no `STATUS.md` como `rascunho`.
+Se o usuário não indicou, apresente as primeiras linhas de `docs/05-specs/roadmap.md` (tamanho e bloqueio de cada uma) e deixe o usuário escolher. Sem roadmap, acione o `product-lead` para propor a menor fatia que entrega valor ponta a ponta à persona primária, na ordem da jornada to-be. Feature de tamanho **G** é dividida antes da spec. Crie `docs/05-specs/<nnn-nome>/` e registre a feature no `STATUS.md` como `rascunho`.
 
 ## 2. spec.md (product-lead)
 
@@ -26,7 +26,7 @@ Se o usuário não indicou, acione o `product-lead` para propor a próxima featu
 
 1. O `engineering-lead`, com o `architect`, redige `plan.md` a partir de `references/plan-template.md`.
 2. **Checagem da constitution:** artigo por artigo, com ✅ ou uma violação justificada.
-3. Artefatos de apoio, quando aplicáveis: `data-model.md` (tabelas, RLS, migrações) e contratos de API ou ações de servidor.
+3. Artefatos de apoio, quando aplicáveis: `data-model.md` a partir de `references/data-model-template.md` (só o que a feature cria ou muda: tabelas, RLS, migrações com caminho de volta, dado pessoal) e contratos de API ou ações de servidor.
 4. Novas decisões difíceis de reverter viram ADR.
 
 ## 4. tasks.md (engineering-lead)

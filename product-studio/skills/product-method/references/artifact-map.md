@@ -4,7 +4,8 @@
 
 ```
 docs/
-  STATUS.md                    estado central e portões
+  STATUS.md                    estado central e portões (decisões recentes)
+  decisions-log.md             decisões antigas, saídas do STATUS.md
   00-charter/
     charter.md
   01-discovery/
@@ -18,6 +19,10 @@ docs/
     aggregates/<agregado>.md
   04-standards/
     constitution.md  stack.md  definition-of-done.md  design-system.md
+    data-model.md                esboço do banco (G4)
+    data-model.generated.md      visão do banco gerada das migrações
+  05-specs/
+    roadmap.md                   ordem das próximas features
   05-specs/<nnn-feature>/
     spec.md  plan.md  tasks.md  data-model.md  acceptance.md
   adr/
@@ -67,6 +72,8 @@ Todos os campos são opcionais.
 | `specApprovedStatus` | `["Aprovada"]` | Textos da linha `**Status:**` que contam como spec aprovada |
 | `productionPaths` | `["src/", "supabase/", "tests/", "e2e/"]` | Pastas protegidas pelo hook de guarda |
 | `unguardedPaths` | `[]` | Exceções dentro das pastas protegidas |
+| `docLimits` | `STATUS.md` 15.000 caracteres, `CLAUDE.md` 10.000; 600 por linha | Teto por documento (`maxChars`, `maxLineChars`), aplicado após cada edição. `{status}` vale o `statusFile`. Um objeto vazio desliga |
+| `postEditCommands` | ESLint em JS/TS, se instalado | Lista de `{paths, extensions, command}` rodada após cada edição. `{file}` é o arquivo editado |
 
 ## Artefatos reconstruídos
 

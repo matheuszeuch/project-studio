@@ -24,3 +24,6 @@ Uma feature só é apresentada ao usuário para aceite quando **todos** os itens
 - [ ] Migrações aplicadas no preview, com caminho de volta
 - [ ] `STATUS.md` e `tasks.md` atualizados
 - [ ] Glossário e ADRs atualizados, se algo mudou
+- [ ] Mapa de telas atualizado, se a feature criou, removeu ou mudou telas
+- [ ] Visão do banco regenerada, se houve migração
+- [ ] Roadmap atualizado
