@@ -55,3 +55,19 @@ IDs nunca são reaproveitados. Um item descartado recebe o status `descartado`, 
 ## Numeração das features
 
 `docs/05-specs/001-salvar-receita/`: três dígitos e um nome curto em kebab-case, na ordem de criação.
+
+## Configuração: `.product-studio.json`
+
+Todos os campos são opcionais.
+
+| Campo | Padrão | Uso |
+|---|---|---|
+| `statusFile` | `docs/STATUS.md` | Arquivo de estado lido pelos hooks |
+| `specsDir` | `docs/05-specs` | Pasta das specs. Aceita `<nnn>-nome/spec.md` e `<nnn>-nome.md` |
+| `specApprovedStatus` | `["Aprovada"]` | Textos da linha `**Status:**` que contam como spec aprovada |
+| `productionPaths` | `["src/", "supabase/", "tests/", "e2e/"]` | Pastas protegidas pelo hook de guarda |
+| `unguardedPaths` | `[]` | Exceções dentro das pastas protegidas |
+
+## Artefatos reconstruídos
+
+Num produto adotado (skill `adopt`), todo artefato gerado por engenharia reversa leva, abaixo do título, o bloco `> **Origem:** reconstruído por engenharia reversa em <data> a partir de <arquivos>.` Afirmações sem evidência primária viram `HYP-`, nunca `INS-`.

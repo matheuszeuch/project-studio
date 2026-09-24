@@ -15,7 +15,7 @@ Método de criação de produtos digitais com IA, do problema ao lançamento, co
 | 6 | AI-Driven Development | `build-feature` | Feature aceita |
 | 7 | Brochures | `brochure` | G7 lançamento |
 
-Transversais: `product-method` (orquestração e status), `gate-review` (portões), `retro` (melhoria do próprio método).
+Transversais: `product-method` (orquestração e status), `gate-review` (portões), `retro` (melhoria do próprio método), `adopt` (adoção de um produto que já existe).
 
 ## Agentes
 
@@ -29,6 +29,7 @@ Transversais: `product-method` (orquestração e status), `gate-review` (portõe
 
 - Diga **"vamos começar um app novo"** para criar o `docs/STATUS.md` e iniciar o Kickoff.
 - Diga **"em que fase estamos?"** para retomar.
+- Diga **"adotar o método neste projeto"** para trazer um produto existente, com engenharia reversa dos artefatos.
 
 ## Onde funciona
 
@@ -45,7 +46,7 @@ Os caminhos são idênticos nos dois lugares.
 | PreToolUse | Bloqueia código de produção antes do G4 (exceto durante a fase 4) e sem spec aprovada |
 | PostToolUse | Roda ESLint no arquivo editado, se instalado |
 
-Os hooks só agem em projetos com `docs/STATUS.md`. As pastas protegidas ficam em `.product-studio.json` (padrão: `src/`, `supabase/`, `tests/`, `e2e/`). Para abrir uma exceção autorizada, use `PRODUCT_STUDIO_GUARD=off`. Requer Node.js.
+Os hooks só agem em projetos com o arquivo de status (padrão `docs/STATUS.md`). O `.product-studio.json` configura o caminho do status, a pasta e o texto de aprovação das specs, as pastas protegidas (padrão: `src/`, `supabase/`, `tests/`, `e2e/`) e as exceções. Portões marcados como `(retroativo)` contam como aprovados. Para abrir uma exceção autorizada, use `PRODUCT_STUDIO_GUARD=off`. Requer Node.js.
 
 ## Evolução
 

@@ -23,12 +23,46 @@ export function readText(path) {
   }
 }
 
+// Configuração do projeto em .product-studio.json. Todos os campos são opcionais.
+//  - statusFile: onde fica o estado central (padrão docs/STATUS.md)
+//  - specsDir: onde ficam as specs (padrão docs/05-specs). Aceita pasta por spec
+//    (<nnn>/spec.md) e arquivo único por spec (<nnn>-nome.md)
+//  - specApprovedStatus: textos de status que contam como spec aprovada
+//  - productionPaths: pastas protegidas pelo hook de guarda
+//  - unguardedPaths: exceções dentro das pastas protegidas
+export const DEFAULT_CONFIG = {
+  statusFile: "docs/STATUS.md",
+  specsDir: "docs/05-specs",
+  specApprovedStatus: ["Aprovada"],
+  productionPaths: ["src/", "supabase/", "tests/", "e2e/"],
+  unguardedPaths: [],
+};
+
+export function loadConfig(root) {
+  const text = readText(join(root, ".product-studio.json"));
+  if (!text) return { ...DEFAULT_CONFIG };
+  try {
+    return { ...DEFAULT_CONFIG, ...JSON.parse(text) };
+  } catch {
+    return { ...DEFAULT_CONFIG };
+  }
+}
+
+// Portão retroativo: "- [x] G3 Domínio — modelo aprovado (retroativo 2026-09-24)".
+// Conta como aprovado para os hooks, mas registra que foi reconstruído a partir
+// de um projeto existente, e não descoberto pelo método.
 export function loadStatus(root) {
-  const text = readText(join(root, "docs", "STATUS.md"));
+  const { statusFile } = loadConfig(root);
+  const text = readText(join(root, statusFile));
   if (text === null) return null;
   const gates = {};
   for (const m of text.matchAll(/^\s*-\s*\[( |x|X)\]\s*(G\d+)\b(.*)$/gm)) {
-    gates[m[2]] = { approved: m[1].toLowerCase() === "x", label: m[3].replace(/^\s*[—-]?\s*/, "").trim() };
+    const label = m[3].replace(/^\s*[—-]?\s*/, "").trim();
+    gates[m[2]] = {
+      approved: m[1].toLowerCase() === "x",
+      retroactive: /\bretroativo\b/i.test(label),
+      label,
+    };
   }
   const phaseMatch = text.match(/\*\*Fase atual:\*\*\s*(.+)/i) || text.match(/Fase atual:\s*(.+)/i);
   const phase = phaseMatch ? phaseMatch[1].trim() : "desconhecida";
@@ -37,27 +71,34 @@ export function loadStatus(root) {
   return { text, gates, phase, phaseNumber, product: productMatch ? productMatch[1].trim() : null };
 }
 
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function isApprovedSpec(text, statuses) {
+  if (!text) return false;
+  const alternatives = statuses.map(escapeRegex).join("|");
+  return new RegExp(`^\\s*\\*{0,2}Status:?\\*{0,2}:?\\s*(?:${alternatives})(?![\\p{L}\\p{N}])`, "imu").test(text);
+}
+
 export function approvedSpecs(root) {
-  const dir = join(root, "docs", "05-specs");
+  const { specsDir, specApprovedStatus } = loadConfig(root);
+  const dir = join(root, specsDir);
   if (!existsSync(dir)) return [];
   const out = [];
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
-    const spec = readText(join(dir, entry.name, "spec.md"));
-    if (spec && /^\s*\*{0,2}Status:?\*{0,2}:?\s*Aprovada/im.test(spec)) out.push(entry.name);
+    const path = entry.isDirectory()
+      ? join(dir, entry.name, "spec.md")
+      : entry.name.endsWith(".md")
+        ? join(dir, entry.name)
+        : null;
+    if (path && isApprovedSpec(readText(path), specApprovedStatus)) out.push(entry.name.replace(/\.md$/, ""));
   }
   return out;
 }
 
-export function loadConfig(root) {
-  const defaults = { productionPaths: ["src/", "supabase/", "tests/", "e2e/"] };
-  const text = readText(join(root, ".product-studio.json"));
-  if (!text) return defaults;
-  try {
-    return { ...defaults, ...JSON.parse(text) };
-  } catch {
-    return defaults;
-  }
+export function isUnder(file, paths) {
+  return paths.some((p) => file === p.replace(/\/$/, "") || file.startsWith(p.endsWith("/") ? p : `${p}/`));
 }
 
 export function relPath(root, filePath) {

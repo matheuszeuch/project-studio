@@ -1,6 +1,6 @@
 {
   "name": "product-studio",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Método completo de criação de produtos digitais com portões de aprovação: Kickoff → Design Thinking → Working Backwards → DDD → Padrões → Spec-Driven → AI-Driven Development → Brochures. Três Leads (Product, UX, Engineering) orquestram sete especialistas.",
   "author": {
     "name": "Matheus Zeuch"

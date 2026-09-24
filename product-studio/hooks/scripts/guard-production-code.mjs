@@ -2,9 +2,10 @@
 // Regras:
 //  - Fora de um projeto product-studio (sem docs/STATUS.md): não faz nada.
 //  - Antes do G4: só permite código de produção durante a fase 4 (esqueleto do repositório).
-//  - Depois do G4: exige ao menos uma spec com "**Status:** Aprovada".
+//  - Depois do G4: exige ao menos uma spec aprovada (texto configurável em .product-studio.json).
+//  - Um portão retroativo (projeto adotado) conta como aprovado.
 // Desligar temporariamente: PRODUCT_STUDIO_GUARD=off
-import { readInput, projectDir, loadStatus, approvedSpecs, loadConfig, relPath } from "./lib.mjs";
+import { readInput, projectDir, loadStatus, approvedSpecs, loadConfig, relPath, isUnder } from "./lib.mjs";
 
 if ((process.env.PRODUCT_STUDIO_GUARD || "").toLowerCase() === "off") process.exit(0);
 
@@ -17,9 +18,8 @@ const toolInput = input.tool_input || {};
 const file = relPath(root, toolInput.file_path || toolInput.notebook_path);
 if (!file || file.startsWith("..")) process.exit(0);
 
-const { productionPaths } = loadConfig(root);
-const isProduction = productionPaths.some((p) => file === p.replace(/\/$/, "") || file.startsWith(p));
-if (!isProduction) process.exit(0);
+const { productionPaths, unguardedPaths, specsDir } = loadConfig(root);
+if (!isUnder(file, productionPaths) || isUnder(file, unguardedPaths)) process.exit(0);
 
 const g4 = status.gates.G4?.approved === true;
 
@@ -38,7 +38,7 @@ if (!g4) {
 }
 
 if (approvedSpecs(root).length === 0) {
-  block("não há nenhuma spec aprovada em docs/05-specs/ (linha \"**Status:** Aprovada\").");
+  block(`não há nenhuma spec aprovada em ${specsDir}/ (veja specApprovedStatus em .product-studio.json).`);
 }
 
 process.exit(0);

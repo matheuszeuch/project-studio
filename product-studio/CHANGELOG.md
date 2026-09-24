@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 — 2026-09-24
+- Nova skill `adopt`: adoção de um produto existente por engenharia reversa (inventário fonte → artefato, move em commit isolado, cabeçalho de origem nos artefatos reconstruídos, gaps como `HYP-`), a partir da análise do Sistema Milestones
+- Portão retroativo: `- [x] Gn … (retroativo AAAA-MM-DD)` conta como aprovado nos hooks e aparece como 🔁 no SessionStart. G0, G3 e G4 podem ser retroativos; G1 e G2 nunca
+- `.product-studio.json` ganha `statusFile`, `specsDir`, `specApprovedStatus` e `unguardedPaths`. Specs em arquivo único (`<nnn>-nome.md`) passam a ser reconhecidas
+- `product-method`, `gate-review`, `artifact-map` e `status-template` documentam a adoção
+
 ## 1.0.2 — 2026-09-23
 - `product-method`: preparar o repositório agora publica uma página "em breve" logo no começo e entrega o passo a passo de domínio e DNS (Vercel + provedor de DNS, Cloudflare em "DNS only"), com verificação. Nova referência `references/coming-soon.md` com `site/index.html`, `vercel.json` estático (sem framework, rewrite do subdomínio `poc` para o protótipo, `noindex`) e as armadilhas vividas no Meus Charutos
 - `kickoff`: pergunta por domínio, provedor de DNS e conta na Vercel

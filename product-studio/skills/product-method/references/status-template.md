@@ -6,7 +6,8 @@
 
 ## Portões
 
-<!-- Não altere o formato "- [ ] Gn": os hooks leem estas linhas. -->
+<!-- Não altere o formato "- [ ] Gn": os hooks leem estas linhas.
+     Produto adotado (skill adopt): "- [x] G3 … (retroativo AAAA-MM-DD)" conta como aprovado. -->
 - [ ] G0 Kickoff — charter aprovado
 - [ ] G1 Design Thinking — problema e solução validados
 - [ ] G2 Working Backwards — narrativa aprovada

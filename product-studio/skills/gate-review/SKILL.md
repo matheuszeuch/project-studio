@@ -38,3 +38,4 @@ description: Avalia se um portão (gate) entre fases do método product-studio e
 
 - Nunca marque um portão como aprovado sem aprovação explícita do usuário, mesmo com veredito `PRONTO`.
 - Um veredito `NÃO PRONTO` não impede o usuário de aprovar, mas a decisão e o risco precisam ficar registrados.
+- **Portão retroativo** (produto adotado pela skill `adopt`): o checklist é aplicado aos artefatos reconstruídos, e cada item cita a fonte no projeto. G0, G3 e G4 podem ser retroativos; G1 e G2 nunca, porque exigem evidência primária. Marque como `- [x] Gn … (retroativo AAAA-MM-DD)`.
